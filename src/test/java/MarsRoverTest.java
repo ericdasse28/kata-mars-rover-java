@@ -37,6 +37,15 @@ public class MarsRoverTest {
         );
     }
 
+    public static Stream<Arguments> generateTurnRightArgs() {
+        return Stream.of(
+                Arguments.of(new Point(5, 4), Direction.N, Direction.E),
+                Arguments.of(new Point(7, 8), Direction.S, Direction.W),
+                Arguments.of(new Point(2, 5), Direction.E, Direction.S),
+                Arguments.of(new Point(0, 1), Direction.W, Direction.N)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("generateForwardTestArgs")
     void acceptForwardCommand(Point startingPoint, Direction startingDirection, Point pointAfterMove) {
@@ -68,6 +77,17 @@ public class MarsRoverTest {
         var rover = new MarsRover(startingPoint, startingDirection);
 
         rover.accept(List.of('l'));
+
+        Assertions.assertEquals(startingPoint, rover.point);
+        Assertions.assertEquals(directionAfterTurn, rover.direction);
+    }
+
+    @ParameterizedTest
+    @MethodSource("generateTurnRightArgs")
+    void acceptTurnRightCommand(Point startingPoint, Direction startingDirection, Direction directionAfterTurn) {
+        var rover = new MarsRover(startingPoint, startingDirection);
+
+        rover.accept(List.of('r'));
 
         Assertions.assertEquals(startingPoint, rover.point);
         Assertions.assertEquals(directionAfterTurn, rover.direction);

@@ -18,8 +18,20 @@ public class MarsRover {
                 moveBackward();
             } else if (command == 'l') {
                 turnLeft();
+            } else if (command == 'r') {
+                turnRight();
             }
         }
+    }
+
+    private void turnRight() {
+        var directionAfterTurn = new HashMap<Direction, Direction>();
+        directionAfterTurn.put(Direction.N, Direction.E);
+        directionAfterTurn.put(Direction.S, Direction.W);
+        directionAfterTurn.put(Direction.E, Direction.S);
+        directionAfterTurn.put(Direction.W, Direction.N);
+
+        this.direction = directionAfterTurn.get(this.direction);
     }
 
     private void turnLeft() {
