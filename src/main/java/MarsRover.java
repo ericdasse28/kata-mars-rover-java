@@ -11,16 +11,25 @@ public class MarsRover {
     }
 
     public void accept(List<Character> commands) {
-        for (char command: commands) {
+        for (char command : commands) {
             if (command == 'f') {
                 moveForward();
             } else if (command == 'b') {
                 moveBackward();
+            } else if (command == 'l') {
+                turnLeft();
             }
         }
+    }
 
+    private void turnLeft() {
+        var directionAfterTurn = new HashMap<Direction, Direction>();
+        directionAfterTurn.put(Direction.N, Direction.W);
+        directionAfterTurn.put(Direction.S, Direction.E);
+        directionAfterTurn.put(Direction.E, Direction.N);
+        directionAfterTurn.put(Direction.W, Direction.S);
 
-
+        this.direction = directionAfterTurn.get(this.direction);
     }
 
     private void moveBackward() {
