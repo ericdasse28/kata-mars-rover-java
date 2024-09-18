@@ -24,25 +24,25 @@ public class MarsRover {
     }
 
     private void moveBackward() {
-        var directionPointAfterMove = new HashMap<Direction, Point>();
+        var pointGivenDirection = new HashMap<Direction, Point>();
 
-        directionPointAfterMove.put(Direction.N, new Point(this.point.x(), this.point.y() - 1));
-        directionPointAfterMove.put(Direction.S, new Point(this.point.x(), this.point.y() + 1));
-        directionPointAfterMove.put(Direction.E, new Point(this.point.x() - 1, this.point.y()));
-        directionPointAfterMove.put(Direction.W, new Point(this.point.x() + 1, this.point.y()));
+        pointGivenDirection.put(Direction.N, new Point(this.point.x(), this.point.y() - 1));
+        pointGivenDirection.put(Direction.S, new Point(this.point.x(), this.point.y() + 1));
+        pointGivenDirection.put(Direction.E, new Point(this.point.x() - 1, this.point.y()));
+        pointGivenDirection.put(Direction.W, new Point(this.point.x() + 1, this.point.y()));
 
-        this.point = directionPointAfterMove.get(this.direction);
+        this.point = pointGivenDirection.get(this.direction);
     }
 
     private void moveForward() {
-        var directionPointAfterMove = new HashMap<Direction, Point>();
+        var pointGivenDirection = new HashMap<Direction, Point>();
 
-        directionPointAfterMove.put(Direction.N, new Point(this.point.x(), this.point.y() + 1));
-        directionPointAfterMove.put(Direction.S, new Point(this.point.x(), this.point.y() - 1));
-        directionPointAfterMove.put(Direction.E, new Point(this.point.x() + 1, this.point.y()));
-        directionPointAfterMove.put(Direction.W, new Point(this.point.x() - 1, this.point.y()));
+        pointGivenDirection.put(Direction.N, new Point(this.point.x(), this.point.y() + 1));
+        pointGivenDirection.put(Direction.S, new Point(this.point.x(), this.point.y() - 1));
+        pointGivenDirection.put(Direction.E, new Point(this.point.x() + 1, this.point.y()));
+        pointGivenDirection.put(Direction.W, new Point(this.point.x() - 1, this.point.y()));
 
-        this.point = directionPointAfterMove.get(this.direction);
+        this.point = pointGivenDirection.get(this.direction);
     }
 }
 
